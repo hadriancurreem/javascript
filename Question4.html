@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Question 4</title>
+    </head>
+
+    <body>
+        <input type="number" id="num" value="0"><p>Enter number of values to be averaged: </p>
+        <button onclick = "findAverage()">Input Values</button>
+        
+        <p id = "total"></p>
+        <p id = "mean"></p>
+
+        <script>
+            function findAverage() {
+                let number = Number(document.getElementById("num").value);
+                let total = 0;
+                let value;
+                for(let i= 0; i < number; i++){
+                    user = prompt("Enter value " + (i+1) + ": ");
+                    value = parseFloat(user);
+                    total = total + value;
+                }
+                let mean = total/number;
+                document.getElementById("total").innerHTML = "The total of your values is: " + total;
+                document.getElementById("mean").innerHTML = "The mean of your values is: " + mean.toFixed(2);
+        }
+        </script>
+    
+
+    </body>
+</html>

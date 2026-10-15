@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Question 3</title>
+    </head>
+
+    <body>
+        <input type="number" id="num1" value="0"><p>Enter mark for analysis: </p>
+        <input type="number" id="num2" value="0"><p>Enter mark for design: </p>
+        <input type="number" id="num3" value="0"><p>Enter mark for implementation: </p>
+        <input type="number" id="num4" value="0"><p>Enter mark for evaluation: </p>
+        <p id = "result"></p>
+        <p id = "grades"></p>
+        <p id = "nextBand"></p>
+        
+        <button onclick= "gradeCalc()">Calculate Grade</button>
+        
+        <script>
+            function gradeCalc() {
+                var analysis = parseFloat(document.getElementById("num1").value);
+                var design = parseFloat(document.getElementById("num2").value);
+                var implementation = parseFloat(document.getElementById("num3").value);
+                var evaluation = parseFloat(document.getElementById("num4").value);
+
+                var total = analysis + design + implementation + evaluation;
+                document.getElementById("result").innerHTML = "Your total mark: " + String(Number(total));
+
+                boundaryGrades = [0,4,13,22,31,41,54,67,80]
+                let position;
+                
+                if (boundaryGrades.includes(Number(total))) {
+                    position = boundaryGrades.indexOf(Number(total)) + 1;
+                }
+                
+                else {
+                    boundaryGrades.push(Number(total));
+                    boundaryGrades.sort((a, b) => a - b);
+                    position = boundaryGrades.indexOf(Number(total)) + 1;
+                }
+                
+                document.getElementById("grades").innerHTML = position;
+                
+                let grades = ["U","G","F","E","D","C","B","A","A*"]
+
+                let currentGradeIndex = position - 1;
+                let yourGrade;
+                let boundary = [0,4,13,22,31,41,54,67,80];
+                
+                if (boundary.includes(Number(total))) {
+                    yourGrade = grades[currentGradeIndex];
+                }
+                else {
+                    yourGrade = grades[currentGradeIndex-1];
+                }
+
+                document.getElementById("grades").innerHTML = "Your Grade: " + yourGrade;
+
+                let nextBand = boundaryGrades[position] - Number(total)
+                
+                if (yourGrade == "A*"){
+                    nextBand = "N/A"
+                }
+
+                document.getElementById("nextBand").innerHTML = "Marks needed to get into the next band: " + nextBand;
+            } 
+        </script>
+    </body>
+</html>

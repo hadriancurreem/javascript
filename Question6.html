@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Question 6</title>
+    </head>
+
+
+    <body>
+
+    <p id = "nums"></p>
+    <p id = "word"></p>
+
+    <button onclick = "randomNum()">Generate random number</button>
+
+        <script>
+            function randomNum() {
+                let randomNum = Math.floor(Math.random() * 6) + 1;
+                let nums = [1,2,3,4,5,6];
+                let letters = ["One","Two","Three","Four","Five","Six"];
+                let position;
+
+                nums.push(randomNum);
+                nums.sort((a, b) => a - b);
+                position = nums.indexOf(randomNum) + 1;
+                document.getElementById("nums").innerHTML = randomNum;
+
+                let currentPosition = position - 1;
+                
+                let word = letters[currentPosition];
+
+                document.getElementById("word").innerHTML = "Your number = " + word;
+            } 
+        </script>
+
+    </body>
+</html>

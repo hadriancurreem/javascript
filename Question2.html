@@ -8,15 +8,16 @@
         
         <input type="number" id="num1" value="5">
         <input type="number" id="num2" value="2">
-        <button onclick="addNumbers()">Add</button>
+        <p id = "op"></p>
         <p id = "result"></p>
+        <button onclick= "addNumbers()">Add Numbers</button>
 
             <script>
                 function addNumbers() {
                     let c = document.getElementById("num1").value;
                     let d = document.getElementById("num2").value;
-                    //document.write("The value of c+d is: " + String(c+d) + "<br>");
-                    document.getElementById("result").innerHTML = "The value of c+d is: " + String(Number(c) + Number(d));
+                    document.getElementById("op").innerHTML = "You entered the numbers " + String(Number(c)) + " and " + String(Number(d));
+                    document.getElementById("result").innerHTML = "The add up to: " + String(Number(c) + Number(d));
                 }
             </script>
     </body>

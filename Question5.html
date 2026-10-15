@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Question 5</title>
+    </head>
+    <body>
+        <input type="number" id="current" value="0"><p>Enter current balance: </p>
+        <input type="text" id="interest" value="0"><p>Enter interest rate (%): </p>
+        <input type="number" id="desired" value="0"><p>Enter desired balance: </p>
+
+        <button onclick = "calculateInterest()">Calculate Interest</button>
+
+        <p id = "balance"></p>
+        <p id = "ir"></p>
+        <p id = "newBalance"></p>
+
+        <script>
+            function calculateInterest() {
+                let iRate = document.getElementById("interest").value;
+                let balance = parseFloat(document.getElementById("current").value);
+                let desired = parseFloat(document.getElementById("desired").value);
+                let newBalance = balance;
+                let i = 0;
+
+
+                let ira = parseFloat(iRate.replace("%",""));
+                let interestRate = (ira/100)+1;
+                document.getElementById("balance").innerHTML = "£" + balance + " starting balance - " + Number(ira) + "% interest rate (" + ((interestRate-1).toFixed(2)) + ")";
+
+                let outputLog = ""
+
+                while (newBalance < desired){
+                    i = i + 1;
+                    newBalance = newBalance * interestRate;
+                    outputLog += "Year " + i + ": New balance: " + newBalance.toFixed(2) + "<br>";
+                }
+                document.getElementById("newBalance").innerHTML = outputLog;
+
+            }
+
+        </script>
+
+
+    </body>
+</html>
